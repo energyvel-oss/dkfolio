@@ -9,8 +9,13 @@ class SmoothRoboticsCarousel {
         this.progressBar = document.getElementById('progressBar');
 
         this.autoPlayInterval = null;
-        this.autoPlayDuration = 2500;
+        this.autoPlayDuration = 4000;
         this.progressAnimation = null;
+        this.touchStartX = 0;
+        this.touchStartY = 0;
+        this.touchEndX = 0;
+        this.touchEndY = 0;
+        this.minSwipeDistance = 50;
 
         this.init();
     }
@@ -20,7 +25,11 @@ class SmoothRoboticsCarousel {
         this.createIndicators();
         this.bindEvents();
         this.updateSlides();
-        this.startAutoPlay();
+
+        // Start autoplay after a delay to allow user to see the gallery first
+        setTimeout(() => {
+            this.startAutoPlay();
+        }, 2000);
     }
 
     createSlides() {
@@ -129,30 +138,87 @@ class SmoothRoboticsCarousel {
         });
 
         // Optimized touch support
-        let startX = 0;
-        let startTime = 0;
+        this.bindTouchEvents();
 
+        // Mouse wheel support
+        this.track.addEventListener('wheel', (e) => {
+            if (!this.isTransitioning) {
+                e.preventDefault();
+                this.resetAutoPlay();
+                if (e.deltaY > 0) {
+                    this.next();
+                } else {
+                    this.prev();
+                }
+            }
+        }, { passive: false });
+
+        // Pause autoplay on hover
+        this.track.addEventListener('mouseenter', () => {
+            this.pauseAutoPlay();
+        });
+
+        this.track.addEventListener('mouseleave', () => {
+            this.resumeAutoPlay();
+        });
+
+        // Handle visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pauseAutoPlay();
+            } else {
+                this.resumeAutoPlay();
+            }
+        });
+    }
+
+    bindTouchEvents() {
         this.track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            startTime = Date.now();
+            this.touchStartX = e.touches[0].clientX;
+            this.touchStartY = e.touches[0].clientY;
+            this.pauseAutoPlay();
         }, { passive: true });
 
+        this.track.addEventListener('touchmove', (e) => {
+            // Prevent scrolling when swiping horizontally
+            const touchX = e.touches[0].clientX;
+            const touchY = e.touches[0].clientY;
+            const diffX = Math.abs(touchX - this.touchStartX);
+            const diffY = Math.abs(touchY - this.touchStartY);
+
+            if (diffX > diffY) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
         this.track.addEventListener('touchend', (e) => {
-            if (!startX || this.isTransitioning) return;
+            if (!this.touchStartX || this.isTransitioning) {
+                this.resumeAutoPlay();
+                return;
+            }
 
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            const diffTime = Date.now() - startTime;
+            this.touchEndX = e.changedTouches[0].clientX;
+            this.touchEndY = e.changedTouches[0].clientY;
 
-            if (Math.abs(diffX) > 50 && diffTime < 300) {
-                this.resetAutoPlay();
+            const diffX = this.touchStartX - this.touchEndX;
+            const diffY = Math.abs(this.touchStartY - this.touchEndY);
+
+            // Only trigger swipe if horizontal movement is greater than vertical
+            if (Math.abs(diffX) > this.minSwipeDistance && Math.abs(diffX) > diffY) {
                 if (diffX > 0) {
                     this.next();
                 } else {
                     this.prev();
                 }
             }
-            startX = 0;
+
+            // Reset touch coordinates
+            this.touchStartX = 0;
+            this.touchStartY = 0;
+            this.touchEndX = 0;
+            this.touchEndY = 0;
+
+            this.resumeAutoPlay();
         }, { passive: true });
     }
 
@@ -199,23 +265,26 @@ class SmoothRoboticsCarousel {
     }
 
     next() {
+        if (this.isTransitioning) return;
         this.currentIndex = (this.currentIndex + 1) % galleryData.length;
         this.updateSlides();
     }
 
     prev() {
+        if (this.isTransitioning) return;
         this.currentIndex = (this.currentIndex - 1 + galleryData.length) % galleryData.length;
         this.updateSlides();
     }
 
     goTo(index) {
-        if (index !== this.currentIndex) {
+        if (index !== this.currentIndex && !this.isTransitioning) {
             this.currentIndex = index;
             this.updateSlides();
         }
     }
 
     startAutoPlay() {
+        this.clearAutoPlay();
         this.startProgressAnimation();
 
         this.autoPlayInterval = setInterval(() => {
@@ -224,6 +293,26 @@ class SmoothRoboticsCarousel {
                 this.startProgressAnimation();
             }
         }, this.autoPlayDuration);
+    }
+
+    pauseAutoPlay() {
+        this.clearAutoPlay();
+    }
+
+    resumeAutoPlay() {
+        if (!this.autoPlayInterval) {
+            this.startAutoPlay();
+        }
+    }
+
+    clearAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = null;
+        }
+        if (this.progressAnimation) {
+            this.progressAnimation.cancel();
+        }
     }
 
     startProgressAnimation() {
@@ -244,17 +333,27 @@ class SmoothRoboticsCarousel {
     }
 
     resetAutoPlay() {
-        if (this.autoPlayInterval) {
-            clearInterval(this.autoPlayInterval);
-        }
-        if (this.progressAnimation) {
-            this.progressAnimation.cancel();
-        }
+        this.clearAutoPlay();
         this.startAutoPlay();
+    }
+
+    destroy() {
+        this.clearAutoPlay();
+        // Remove event listeners if needed
     }
 }
 
 // Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new SmoothRoboticsCarousel();
+    // Only initialize if gallery section exists
+    if (document.getElementById('carouselTrack')) {
+        window.galleryCarousel = new SmoothRoboticsCarousel();
+    }
+});
+
+// Clean up on page unload
+window.addEventListener('beforeunload', () => {
+    if (window.galleryCarousel) {
+        window.galleryCarousel.destroy();
+    }
 });

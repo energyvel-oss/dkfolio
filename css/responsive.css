@@ -1,15 +1,89 @@
 /* Responsive Styles */
+
+
+/* Container responsiveness */
+
+.container {
+    padding: 0 1rem;
+}
+
+@media (min-width: 576px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+
+/* Section padding adjustments */
+
+section {
+    padding: 4rem 0 6rem;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 6rem 0 8rem;
+    }
+}
+
+
+/* Typography responsiveness */
+
+h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+@media (min-width: 576px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* Grid system improvements */
+
 @media (max-width: 1200px) {
     .certifications-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
-
     .skills-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
-
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 }
 
@@ -18,208 +92,270 @@
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
     .hero-title {
         font-size: 3.5rem;
     }
-
     .hero-title1 {
         font-size: 3rem;
+    }
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    /* Modal improvements */
+    .modal-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    .modal-images {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
 
 @media (max-width: 768px) {
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-
     .skills-container {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
-
     .certifications-container {
         grid-template-columns: 1fr;
         max-width: 500px;
+        gap: 1rem;
     }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
-
     .experience-item {
         width: 220px;
+        padding: 15px;
     }
-
     .robot-container {
         width: 60px;
         height: 60px;
     }
-
+    /* Dock responsiveness */
     .dock {
         padding: 8.4px 13.65px 12.6px 13.65px;
         border-radius: 17.85px;
     }
-
     .dock-item {
         width: 39.9px;
         height: 39.9px;
         border-radius: 12.6px;
         margin: 0 5.25px;
     }
-
     .dock-item i {
         font-size: 17.85px;
     }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
     .hero-title {
         font-size: 3rem;
+        line-height: 1.1;
     }
-
     .hero-title1 {
         font-size: 2.5rem;
+        line-height: 1.2;
     }
-
     .hero-subtitle {
         font-size: 1.2rem;
+    }
+    /* Button responsiveness */
+    .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    /* Form responsiveness */
+    .form-control {
+        padding: 0.8rem;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 576px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
     .hero-title {
         font-size: 2.5rem;
     }
-
     .hero-title1 {
         font-size: 2rem;
     }
-
-    .projects-grid,
-    .gallery-grid {
-        grid-template-columns: 1fr;
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
-
-    .gallery-item {
-        height: 200px;
-    }
-
-    .nav-link {
-        font-size: 0.7rem;
-        padding: 0.5rem;
-    }
-
-    .modal-content {
-        padding: 1.5rem;
-        width: 95%;
-    }
-
-    .modal-images {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-icon {
-        margin-left: 0;
-    }
-
-    .contact-links {
-        margin-left: 0;
-    }
-
-    .contact-form {
-        margin-right: 0;
-    }
-
-    .form-control {
-        margin-right: 0;
-    }
-
-    .cert-logo {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
-
-    .cert-logo img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .cert-info h2 {
-        font-size: 16px;
-    }
-
-    .cert-info p {
-        font-size: 12px;
-    }
-
-    .terminal-content {
-        padding: 15px;
-    }
-
-    .view-button {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        padding: 0 1rem;
-    }
-
+    /* Navigation improvements */
     .dock-container {
         bottom: 10px;
     }
-
     .dock {
-        padding: 5px 10px 7px 10px;
+        padding: 6px 10px 8px 10px;
         border-radius: 15px;
     }
-
     .dock-item {
         width: 35px;
         height: 35px;
         border-radius: 10px;
         margin: 0 3px;
     }
-
     .dock-item i {
         font-size: 16px;
     }
+    /* Modal improvements for mobile */
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+        max-height: 90vh;
+    }
+    /* Contact section improvements */
+    .contact-content {
+        gap: 1.5rem;
+    }
+    .contact-icon {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    .contact-links {
+        margin-left: 0;
+        margin-top: 3rem;
+        justify-content: center;
+    }
+    .contact-form {
+        margin-right: 0;
+    }
+    .form-control {
+        margin-right: 0;
+        padding: 0.7rem;
+    }
+    /* Certificate section improvements */
+    .cert-logo {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    .cert-info h2 {
+        font-size: 16px;
+    }
+    .cert-info p {
+        font-size: 12px;
+    }
+    /* Terminal improvements */
+    .terminal-content {
+        padding: 15px;
+    }
+    .view-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    /* About section improvements */
+    .profile-img {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    .about-text {
+        text-align: left;
+        margin-top: 1rem;
+    }
+}
 
+@media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
     }
-
     .hero-title1 {
         font-size: 1.6rem;
     }
-
     .hero-subtitle {
         font-size: 1rem;
     }
-
     .btn {
         padding: 0.7rem 0.9rem;
         font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    /* Experience section improvements */
+    .experience-item {
+        width: 200px;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    .experience-title {
+        font-size: 16px;
+    }
+    .experience-date {
+        font-size: 12px;
+    }
+    .experience-description {
+        font-size: 12px;
+    }
+    /* Section spacing */
+    section {
+        padding: 3rem 0 4rem;
+    }
+    /* Loading screen improvements */
+    .hello {
+        font-size: 2.5rem;
+    }
+    /* Profile image improvements */
+    .profile-img {
+        max-width: 200px;
+    }
+    /* Skills section improvements */
+    .skills-header i {
+        font-size: 1.5rem;
+    }
+    .skills-header h3 {
+        font-size: 1.2rem;
+    }
+    /* Window improvements */
+    .window-content {
+        padding: 1rem;
+    }
+    .window-title {
+        font-size: 0.7rem;
+    }
+}
+
+
+/* Landscape orientation improvements for mobile */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-title1 {
+        font-size: 1.8rem;
+    }
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    section {
+        padding: 2rem 0 3rem;
+    }
+    .dock-container {
+        bottom: 5px;
+    }
+}
+
+
+/* High DPI display improvements */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .slide-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    .project-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    .profile-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 }

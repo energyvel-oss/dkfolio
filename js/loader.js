@@ -33,14 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
             showDock();
         }, 500);
     }
+    showNextHello();
 
     function showDock() {
         // Small delay before showing dock
         setTimeout(() => {
             dock.style.opacity = '1';
             dock.style.transform = 'translate(-50%, 0)';
-        }, 200);
+        }, 100);
     }
 
-    showNextHello();
+
 });

@@ -78,11 +78,11 @@ h2 {
         gap: 1.5rem;
     }
     .skills-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
     }
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
     }
 }
@@ -96,6 +96,14 @@ h2 {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
+    }
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
     .hero-title {
         font-size: 3.5rem;

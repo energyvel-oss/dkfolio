@@ -16,7 +16,7 @@
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
     margin-bottom: 10rem;
     margin-left: -350px;
     /* Vibrant gradient with a softer transparency */
@@ -35,7 +35,7 @@
 
 .hero-title1 {
     font-family: 'Press Start 2P', cursive;
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
     margin-left: -450px;
     text-align: left;
@@ -51,8 +51,8 @@
 
 .btn-animated {
     display: inline-block;
-    padding: 10px 22px;
-    font-size: 1.6rem;
+    padding: 8px 18px;
+    font-size: 1.3rem;
     bottom: -240px;
     left: -550px;
     font-weight: bold;

@@ -358,8 +358,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50.4px;
-    height: 50.4px;
+    width: 40.3px;
+    height: 40.3px;
     border-radius: 15.75px;
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 10px 27px rgba(0, 0, 0, 0.5), 0 6px 17px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.6), inset 0 -2px 6px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.8);
     overflow: hidden;
@@ -372,7 +372,7 @@
 }
 
 .dock-item i {
-    font-size: 22.05px;
+    font-size: 17.6px;
     color: rgba(255, 255, 255, 0.95);
     z-index: 1;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 8px rgba(0, 0, 0, 0.2);

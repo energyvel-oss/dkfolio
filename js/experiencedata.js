@@ -9,12 +9,30 @@ const experienceData = [{
         title: "Instructor",
         date: "Offering Support for Robotics-Available for Assistance",
         description: "Assisted in assembling and programming robotic kits for college projects. Conducted basic troubleshooting and maintenance of project equipments.",
-        position: { top: 400 }
+        position: { top: 300 }
     },
     {
         title: "Robotic Engineer",
         date: "2023 - present",
         description: "As a robotics engineer at TS Robotics, I played a pivotal role in the development and implementation of cutting-edge robotic systems , and I am a fpv drone pilot.",
-        position: { top: 700 }
+        position: { top: 450 }
+    },
+    {
+        title: "Robotic Engineer",
+        date: "2023 - present",
+        description: "As a robotics engineer at TS Robotics, I played a pivotal role in the development and implementation of cutting-edge robotic systems , and I am a fpv drone pilot.",
+        position: { top: 600 }
+    },
+    {
+        title: "Robotic Engineer",
+        date: "2023 - present",
+        description: "As a robotics engineer at TS Robotics, I played a pivotal role in the development and implementation of cutting-edge robotic systems , and I am a fpv drone pilot.",
+        position: { top: 750 }
+    },
+    {
+        title: "Robotic Engineer",
+        date: "2023 - present",
+        description: "As a robotics engineer at TS Robotics, I played a pivotal role in the development and implementation of cutting-edge robotic systems , and I am a fpv drone pilot.",
+        position: { top: 900 }
     }
 ];

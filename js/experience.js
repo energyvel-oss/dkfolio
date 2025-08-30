@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mobile touch support
         let touchStartY = 0;
         let touchEndY = 0;
-        const minSwipeDistance = 50;
+        const minSwipeDistance = 30;
 
         document.addEventListener('touchstart', (e) => {
             touchStartY = e.changedTouches[0].screenY;

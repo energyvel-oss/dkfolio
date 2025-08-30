@@ -12,5 +12,11 @@ const researchData = [{
         date: "On Process-2024",
         description: "This paper discusses the development of soft robots that can adapt to their environment, focusing on their applications in various fields such as healthcare and manufacturing.",
         url: "https://dk-folio.blogspot.com/2025/05/soft-robotics.html"
+    }, {
+        title: "Soft Robots",
+        journal: "Soft Robotics Journal",
+        date: "On Process-2024",
+        description: "This paper discusses the development of soft robots that can adapt to their environment, focusing on their applications in various fields such as healthcare and manufacturing.",
+        url: "https://dk-folio.blogspot.com/2025/05/soft-robotics.html"
     }
 ];
